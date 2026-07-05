@@ -69,28 +69,28 @@ include CMakeFiles/rle_lib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rle_lib.dir/flags.make
 
-CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o: CMakeFiles/rle_lib.dir/flags.make
-CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o: /home/admin/Desktop/ispytanija/C/math/сжатие/через\ поиск\ областей\ одинаковых\ чисел/src/rle_compress_and_decompress.c
-CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o: CMakeFiles/rle_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o -MF CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o.d -o CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o -c "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress.c"
+CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o: CMakeFiles/rle_lib.dir/flags.make
+CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o: /home/admin/Desktop/ispytanija/C/math/сжатие/через\ поиск\ областей\ одинаковых\ чисел/src/rle_compress_and_decompress_1_byte.c
+CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o: CMakeFiles/rle_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o -MF CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o.d -o CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o -c "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress_1_byte.c"
 
-CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress.c" > CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.i
+CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress_1_byte.c" > CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.i
 
-CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress.c" -o CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.s
+CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress_1_byte.c" -o CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.s
 
 # Object files for target rle_lib
 rle_lib_OBJECTS = \
-"CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o"
+"CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o"
 
 # External object files for target rle_lib
 rle_lib_EXTERNAL_OBJECTS =
 
-librle_lib.so: CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o
+librle_lib.so: CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o
 librle_lib.so: CMakeFiles/rle_lib.dir/build.make
 librle_lib.so: CMakeFiles/rle_lib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library librle_lib.so"

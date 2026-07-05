@@ -21,7 +21,7 @@
  *       Алгоритм применяется всегда, даже для неповторяющихся данных,
  *       что может увеличить размер (каждый байт превращается в пару 1, байт).
  */
-char* rle_compress(char* src, size_t length_of_src, size_t* length_of_destination);
+char* rle_compress_1_byte(char* src, size_t length_of_src, size_t* length_of_destination);
 
 /**
  * @brief Распаковывает массив, сжатый RLE (парой счётчик-значение).
@@ -34,6 +34,6 @@ char* rle_compress(char* src, size_t length_of_src, size_t* length_of_destinatio
  *                              повреждённые данные, недостаток памяти).
  *                              Вызывающий должен освободить память через free().
  */
-char* rle_decompress(char* src, size_t length_of_src, size_t* length_of_destination)
+char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_destination);
 
 #endif // RLE_COMPRESS_H

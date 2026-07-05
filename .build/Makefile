@@ -174,29 +174,66 @@ rle_lib/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/build
 .PHONY : rle_lib/fast
 
-src/rle_compress_and_decompress.o: src/rle_compress_and_decompress.c.o
-.PHONY : src/rle_compress_and_decompress.o
+#=============================================================================
+# Target rules for targets named test_rle
+
+# Build rule for target.
+test_rle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_rle
+.PHONY : test_rle
+
+# fast build rule for target.
+test_rle/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/build
+.PHONY : test_rle/fast
+
+src/rle_compress_and_decompress_1_byte.o: src/rle_compress_and_decompress_1_byte.c.o
+.PHONY : src/rle_compress_and_decompress_1_byte.o
 
 # target to build an object file
-src/rle_compress_and_decompress.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o
-.PHONY : src/rle_compress_and_decompress.c.o
+src/rle_compress_and_decompress_1_byte.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o
+.PHONY : src/rle_compress_and_decompress_1_byte.c.o
 
-src/rle_compress_and_decompress.i: src/rle_compress_and_decompress.c.i
-.PHONY : src/rle_compress_and_decompress.i
+src/rle_compress_and_decompress_1_byte.i: src/rle_compress_and_decompress_1_byte.c.i
+.PHONY : src/rle_compress_and_decompress_1_byte.i
 
 # target to preprocess a source file
-src/rle_compress_and_decompress.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.i
-.PHONY : src/rle_compress_and_decompress.c.i
+src/rle_compress_and_decompress_1_byte.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.i
+.PHONY : src/rle_compress_and_decompress_1_byte.c.i
 
-src/rle_compress_and_decompress.s: src/rle_compress_and_decompress.c.s
-.PHONY : src/rle_compress_and_decompress.s
+src/rle_compress_and_decompress_1_byte.s: src/rle_compress_and_decompress_1_byte.c.s
+.PHONY : src/rle_compress_and_decompress_1_byte.s
 
 # target to generate assembly for a file
-src/rle_compress_and_decompress.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.s
-.PHONY : src/rle_compress_and_decompress.c.s
+src/rle_compress_and_decompress_1_byte.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.s
+.PHONY : src/rle_compress_and_decompress_1_byte.c.s
+
+test/main.o: test/main.c.o
+.PHONY : test/main.o
+
+# target to build an object file
+test/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/test/main.c.o
+.PHONY : test/main.c.o
+
+test/main.i: test/main.c.i
+.PHONY : test/main.i
+
+# target to preprocess a source file
+test/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/test/main.c.i
+.PHONY : test/main.c.i
+
+test/main.s: test/main.c.s
+.PHONY : test/main.s
+
+# target to generate assembly for a file
+test/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/test/main.c.s
+.PHONY : test/main.c.s
 
 # Help Target
 help:
@@ -211,9 +248,13 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... rle_lib"
-	@echo "... src/rle_compress_and_decompress.o"
-	@echo "... src/rle_compress_and_decompress.i"
-	@echo "... src/rle_compress_and_decompress.s"
+	@echo "... test_rle"
+	@echo "... src/rle_compress_and_decompress_1_byte.o"
+	@echo "... src/rle_compress_and_decompress_1_byte.i"
+	@echo "... src/rle_compress_and_decompress_1_byte.s"
+	@echo "... test/main.o"
+	@echo "... test/main.i"
+	@echo "... test/main.s"
 .PHONY : help
 
 

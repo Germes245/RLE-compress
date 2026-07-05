@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress.c" "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o" "gcc" "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o.d"
+  "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/src/rle_compress_and_decompress_1_byte.c" "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o" "gcc" "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

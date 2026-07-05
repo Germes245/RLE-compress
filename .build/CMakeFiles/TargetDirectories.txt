@@ -1,4 +1,5 @@
 /home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles/rle_lib.dir
+/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles/test_rle.dir
 /home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles/edit_cache.dir
 /home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles/rebuild_cache.dir
 /home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles/list_install_components.dir

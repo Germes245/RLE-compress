@@ -62,7 +62,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/include/rle_compress_and_decompress.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/include/rle_compress_and_decompress_1_byte.h")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

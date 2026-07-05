@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o"
-  "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress.c.o.d"
+  "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o"
+  "CMakeFiles/rle_lib.dir/src/rle_compress_and_decompress_1_byte.c.o.d"
   "librle_lib.pdb"
   "librle_lib.so"
 )

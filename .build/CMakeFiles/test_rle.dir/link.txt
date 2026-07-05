@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/test_rle.dir/test/main.c.o -o test_rle  -Wl,-rpath,"/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build" librle_lib.so 

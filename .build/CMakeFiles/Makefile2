@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = "/home/admin/Desktop/ispytanija/C/math/сжатие/чере�
 
 # The main recursive "all" target.
 all: CMakeFiles/rle_lib.dir/all
+all: CMakeFiles/test_rle.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/rle_lib.dir/clean
+clean: CMakeFiles/test_rle.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -99,6 +101,32 @@ rle_lib: CMakeFiles/rle_lib.dir/rule
 CMakeFiles/rle_lib.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rle_lib.dir/build.make CMakeFiles/rle_lib.dir/clean
 .PHONY : CMakeFiles/rle_lib.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_rle.dir
+
+# All Build rule for target.
+CMakeFiles/test_rle.dir/all: CMakeFiles/rle_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" --progress-num=3,4 "Built target test_rle"
+.PHONY : CMakeFiles/test_rle.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_rle.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_rle.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/admin/Desktop/ispytanija/C/math/сжатие/через поиск областей одинаковых чисел/build/CMakeFiles" 0
+.PHONY : CMakeFiles/test_rle.dir/rule
+
+# Convenience name for target.
+test_rle: CMakeFiles/test_rle.dir/rule
+.PHONY : test_rle
+
+# clean rule for target.
+CMakeFiles/test_rle.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rle.dir/build.make CMakeFiles/test_rle.dir/clean
+.PHONY : CMakeFiles/test_rle.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

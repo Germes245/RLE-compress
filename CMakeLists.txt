@@ -6,22 +6,19 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
-# Собираем все исходные файлы из src
+# Собираем все исходные файлы библиотеки из src
 file(GLOB SOURCES "src/*.c")
-
-# Создаём динамическую библиотеку (shared)
 add_library(rle_lib SHARED ${SOURCES})
 
-# Если нужна статическая библиотека, замените SHARED на STATIC
-# add_library(rle_lib STATIC ${SOURCES})
+# Добавляем тестовый исполняемый файл
+add_executable(test_rle test/main.c)
+target_link_libraries(test_rle rle_lib)
+target_include_directories(test_rle PRIVATE include)
 
-# (Опционально) Тестовая программа
-# add_executable(test_rle src/test.c)
-# target_link_libraries(test_rle rle_lib)
-
+# Установка (опционально)
 install(TARGETS rle_lib
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION bin
 )
-install(FILES include/rle_compress_and_decompress.h DESTINATION include)
+install(FILES include/rle_compress_and_decompress_1_byte.h DESTINATION include)

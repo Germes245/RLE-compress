@@ -17,7 +17,7 @@
  * сам байт. Если серия одинаковых байт длиннее 255, она разбивается на
  * несколько блоков по 255.
  */
-char* repeating_numbers_collect(char* src, size_t length_of_src, size_t* length_of_destination) {
+char* rle_compress_1_byte(char* src, size_t length_of_src, size_t* length_of_destination) {
     /* Проверка корректности входных параметров */
     if (src == NULL || length_of_src == 0 || length_of_destination == NULL) {
         if (length_of_destination) *length_of_destination = 0;
@@ -88,7 +88,7 @@ char* repeating_numbers_collect(char* src, size_t length_of_src, size_t* length_
  *                              повреждённые данные, недостаток памяти).
  *                              Вызывающий должен освободить память через free().
  */
-char* rle_decompress(char* src, size_t length_of_src, size_t* length_of_destination) {
+char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_destination) {
     /* Проверка входных параметров */
     if (src == NULL || length_of_src == 0 || length_of_destination == NULL) {
         if (length_of_destination) *length_of_destination = 0;

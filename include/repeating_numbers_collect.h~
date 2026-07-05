@@ -1,0 +1,3 @@
+#include <stddef.h>
+
+char* repeating_numbers_collect(char* src, size_t length_of_src, size_t &length_of_destination);

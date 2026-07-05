@@ -76,3 +76,69 @@ char* repeating_numbers_collect(char* src, size_t length_of_src, size_t* length_
 
     return dest;
 }
+
+/**
+ * @brief Распаковывает массив, сжатый RLE (парой счётчик-значение).
+ *
+ * @param src                   указатель на сжатые данные (последовательность пар)
+ * @param length_of_src         длина сжатых данных в байтах (должна быть чётной)
+ * @param length_of_destination указатель на переменную для записи длины распакованных данных
+ * @return                      указатель на выделенный буфер с распакованными данными,
+ *                              или NULL при ошибке (некорректные параметры,
+ *                              повреждённые данные, недостаток памяти).
+ *                              Вызывающий должен освободить память через free().
+ */
+char* rle_decompress(char* src, size_t length_of_src, size_t* length_of_destination) {
+    /* Проверка входных параметров */
+    if (src == NULL || length_of_src == 0 || length_of_destination == NULL) {
+        if (length_of_destination) *length_of_destination = 0;
+        return NULL;
+    }
+
+    /* Сжатые данные должны состоять из целого числа пар (счётчик, значение) */
+    if (length_of_src % 2 != 0) {
+        *length_of_destination = 0;
+        return NULL;
+    }
+
+    /* Первый проход: вычисление общего размера распакованных данных */
+    size_t total_len = 0;
+    for (size_t i = 0; i < length_of_src; i += 2) {
+        unsigned char count = (unsigned char)src[i];
+        /* Счётчик должен быть в диапазоне 1..255 (по условию) */
+        if (count == 0) {
+            *length_of_destination = 0;
+            return NULL;  /* Некорректные данные: нулевой счётчик */
+        }
+        /* Проверка переполнения при суммировании */
+        if (total_len > SIZE_MAX - count) {
+            *length_of_destination = 0;
+            return NULL;
+        }
+        total_len += count;
+    }
+
+    *length_of_destination = total_len;
+
+    /* Выделение памяти под результат */
+    char* dest = (char*)malloc(total_len * sizeof(char));
+    if (dest == NULL) {
+        *length_of_destination = 0;
+        return NULL;
+    }
+
+    /* Второй проход: заполнение выходного буфера */
+    size_t dest_idx = 0;
+    for (size_t i = 0; i < length_of_src; i += 2) {
+        unsigned char count = (unsigned char)src[i];
+        unsigned char value = (unsigned char)src[i + 1];
+        for (size_t j = 0; j < count; ++j) {
+            dest[dest_idx++] = (char)value;
+        }
+    }
+
+    /* Проверка, что записали ровно столько, сколько планировали (можно убрать) */
+    /* if (dest_idx != total_len) { ... } */
+
+    return dest;
+}

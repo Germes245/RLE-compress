@@ -21,6 +21,19 @@
  *       Алгоритм применяется всегда, даже для неповторяющихся данных,
  *       что может увеличить размер (каждый байт превращается в пару 1, байт).
  */
-char* repeating_numbers_collect(char* src, size_t length_of_src, size_t* length_of_destination);
+char* rle_compress(char* src, size_t length_of_src, size_t* length_of_destination);
+
+/**
+ * @brief Распаковывает массив, сжатый RLE (парой счётчик-значение).
+ *
+ * @param src                   указатель на сжатые данные (последовательность пар)
+ * @param length_of_src         длина сжатых данных в байтах (должна быть чётной)
+ * @param length_of_destination указатель на переменную для записи длины распакованных данных
+ * @return                      указатель на выделенный буфер с распакованными данными,
+ *                              или NULL при ошибке (некорректные параметры,
+ *                              повреждённые данные, недостаток памяти).
+ *                              Вызывающий должен освободить память через free().
+ */
+char* rle_decompress(char* src, size_t length_of_src, size_t* length_of_destination)
 
 #endif // RLE_COMPRESS_H

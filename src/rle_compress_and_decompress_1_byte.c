@@ -142,3 +142,71 @@ char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_d
 
     return dest;
 }
+
+/**
+ * @brief Выполняет RLE-сжатие потока байтов из дескриптора в дескриптор.
+ *
+ * Читает данные из input_fd блоками по 4096 байт, обнаруживает серии
+ * одинаковых значений и записывает в output_fd пары (счётчик, значение).
+ * Длинные серии (>255) автоматически разбиваются на блоки по 255.
+ * Сжатие происходит «на лету», без загрузки всего файла в память.
+ *
+ * @param input_fd  дескриптор для чтения (POSIX, открыт на чтение)
+ * @param output_fd дескриптор для записи (POSIX, открыт на запись)
+ * @return 0 при успешном завершении, -1 в случае ошибки чтения или записи.
+ *         При возникновении ошибки процесс сжатия прерывается.
+ *
+ * @note Если read() возвращает 0 (конец файла), функция завершается успешно.
+ *       Если read() возвращает -1 или write() не может записать все байты
+ *       (записано меньше, чем ожидалось, или возвращено -1), функция
+ *       немедленно возвращает -1.
+ */
+int compress_stream(int input_fd, int output_fd) {
+    unsigned char buffer[4096];
+    ssize_t n;
+    unsigned char current_byte = 0;
+    unsigned int current_count = 0;   // счётчик текущей серии (1..255)
+
+    while ((n = read(input_fd, buffer, sizeof(buffer))) > 0) {
+        for (ssize_t i = 0; i < n; ++i) {
+            unsigned char b = buffer[i];
+
+            if (current_count == 0) {
+                // начинаем новую серию
+                current_byte = b;
+                current_count = 1;
+            } else if (b == current_byte && current_count < 255) {
+                // продолжаем текущую серию
+                ++current_count;
+            } else {
+                // серия закончилась или достигнут лимит 255 — записываем пару
+                unsigned char out[2] = { (unsigned char)current_count, current_byte };
+                ssize_t written = 0;
+                while (written < 2) {
+                    ssize_t w = write(output_fd, out + written, 2 - written);
+                    if (w <= 0) return -1;   // ошибка записи
+                    written += w;
+                }
+                // начинаем новую серию с текущего байта
+                current_byte = b;
+                current_count = 1;
+            }
+        }
+    }
+
+    // если read() вернул -1, возвращаем ошибку
+    if (n < 0) return -1;
+
+    // записываем последнюю серию, если она не пуста
+    if (current_count > 0) {
+        unsigned char out[2] = { (unsigned char)current_count, current_byte };
+        ssize_t written = 0;
+        while (written < 2) {
+            ssize_t w = write(output_fd, out + written, 2 - written);
+            if (w <= 0) return -1;
+            written += w;
+        }
+    }
+
+    return 0;
+}

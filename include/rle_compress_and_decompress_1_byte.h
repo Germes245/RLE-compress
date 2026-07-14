@@ -54,6 +54,6 @@ char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_d
  *       (записано меньше, чем ожидалось, или возвращено -1), функция
  *       немедленно возвращает -1.
  */
-int compress_stream(int input_fd, int output_fd);
+int rle_compress_stream(int input_fd, int output_fd);
 
 #endif // RLE_COMPRESS_H

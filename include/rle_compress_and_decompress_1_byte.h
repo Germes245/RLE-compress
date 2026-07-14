@@ -36,4 +36,6 @@ char* rle_compress_1_byte(char* src, size_t length_of_src, size_t* length_of_des
  */
 char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_destination);
 
+int compress_or_decompress_file(char *src_file);
+
 #endif // RLE_COMPRESS_H

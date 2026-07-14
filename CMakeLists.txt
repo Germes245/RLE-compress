@@ -22,3 +22,5 @@ install(TARGETS rle_lib
     RUNTIME DESTINATION bin
 )
 install(FILES include/rle_compress_and_decompress_1_byte.h DESTINATION include)
+
+add_subdirectory(terminal_utile)

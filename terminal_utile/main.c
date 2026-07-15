@@ -64,7 +64,8 @@ int main(int argc, char** argv) {
 
         // Проверяем, существует ли выходной файл
         if (access(output_filename, F_OK) == 0) {
-            fprintf(stderr, "Предупреждение: файл '%s' уже существует, будет перезаписан.\n", output_filename);
+            fprintf(stderr, "Ошибка: файл '%s' уже существует.\n", output_filename);
+            exit(1);
         }
 
         // Открываем входной файл

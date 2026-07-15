@@ -56,4 +56,13 @@ char* rle_decompress_1_byte(char* src, size_t length_of_src, size_t* length_of_d
  */
 int rle_compress_stream(int input_fd, int output_fd);
 
+/**
+ * @brief Распаковывает RLE-сжатый поток из дескриптора в дескриптор.
+ *
+ * @param input_fd  дескриптор для чтения (сжатые данные)
+ * @param output_fd дескриптор для записи (распакованные данные)
+ * @return 0 при успехе, -1 при ошибке ввода-вывода или повреждённых данных.
+ */
+int rle_decompress_stream(int input_fd, int output_fd);
+
 #endif // RLE_COMPRESS_H

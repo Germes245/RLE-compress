@@ -211,3 +211,83 @@ int rle_compress_stream(int input_fd, int output_fd) {
 
     return 0;
 }
+
+/**
+ * @brief Распаковывает RLE-сжатый поток из дескриптора в дескриптор.
+ *
+ * Читает из input_fd пары (счётчик, значение), где счётчик (1..255)
+ * указывает, сколько раз нужно записать значение в выходной поток.
+ * Распаковка происходит «на лету», без загрузки всего файла в память.
+ * Используются внутренние буферы для эффективного ввода-вывода.
+ *
+ * @param input_fd  дескриптор для чтения сжатых данных (POSIX, открыт на чтение)
+ * @param output_fd дескриптор для записи распакованных данных (POSIX, открыт на запись)
+ * @return 0 при успешном завершении, -1 в случае ошибки ввода-вывода.
+ *         Если прочитан счётчик = 0, это считается ошибкой (некорректный формат)
+ *         и функция возвращает -1. Также возвращает -1 при преждевременном
+ *         окончании потока (неполная пара).
+ */
+int rle_decompress_stream(int input_fd, int output_fd) {
+    unsigned char read_buf[4096];   // буфер для чтения
+    unsigned char write_buf[4096];  // буфер для записи
+    size_t read_pos = 0;            // текущая позиция в read_buf
+    size_t read_count = 0;          // количество байт в read_buf
+    size_t write_pos = 0;           // текущая позиция в write_buf
+
+    // Вспомогательная функция: получить следующий байт из входного потока
+    // возвращает байт или -1 при ошибке/конце файла
+    int next_byte() {
+        if (read_pos < read_count) {
+            // ещё есть данные в буфере
+            return read_buf[read_pos++];
+        }
+        // буфер пуст – читаем новую порцию
+        ssize_t n = read(input_fd, read_buf, sizeof(read_buf));
+        if (n < 0) return -1;        // ошибка чтения
+        if (n == 0) return -2;       // конец файла (недостаточно данных)
+        read_count = (size_t)n;
+        read_pos = 1;                // первый байт новой порции
+        return read_buf[0];
+    }
+
+    // Вспомогательная функция: записать буфер в output_fd
+    int flush_write() {
+        if (write_pos == 0) return 0;
+        ssize_t written = 0;
+        while ((size_t)written < write_pos) {
+            ssize_t n = write(output_fd, write_buf + written, write_pos - written);
+            if (n <= 0) return -1;    // ошибка записи
+            written += n;
+        }
+        write_pos = 0;
+        return 0;
+    }
+
+    // Основной цикл распаковки
+    while (1) {
+        // Читаем счётчик
+        int cnt = next_byte();
+        if (cnt == -1) return -1;      // ошибка чтения
+        if (cnt == -2) break;          // конец файла – нормально, выходим
+        if (cnt == 0) return -1;       // невалидный счётчик
+
+        // Читаем значение
+        int val = next_byte();
+        if (val < 0) return -1;        // ошибка чтения или неполная пара
+
+        // Записываем значение cnt раз в выходной буфер
+        while (cnt > 0) {
+            if (write_pos >= sizeof(write_buf)) {
+                // буфер полон – сбрасываем
+                if (flush_write() != 0) return -1;
+            }
+            write_buf[write_pos++] = (unsigned char)val;
+            --cnt;
+        }
+    }
+
+    // Сбрасываем остаток выходного буфера
+    if (flush_write() != 0) return -1;
+
+    return 0;
+}
